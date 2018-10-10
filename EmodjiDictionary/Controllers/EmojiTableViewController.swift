@@ -63,8 +63,8 @@ class EmojiTableViewController: UITableViewController {
     }
     
     override func tableView(_ tableView: UITableView, moveRowAt sourceIndexPath: IndexPath, to destinationIndexPath: IndexPath) {
-        let movedEmoji = emojis.remove(at: sourceIndexPath.row)
-        emojis.insert(movedEmoji, at: destinationIndexPath.row)
+        let movedEmoji = emojis[sourceIndexPath.section].remove(at: sourceIndexPath.row)
+        emojis[destinationIndexPath.section].insert(movedEmoji, at: destinationIndexPath.row)
         tableView.reloadData()
     }
     
@@ -91,7 +91,8 @@ class EmojiTableViewController: UITableViewController {
     override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
         if editingStyle == .delete {
             // Delete the row from the data source
-            emojis.remove(at: indexPath.row)
+//            emojis.remove(at: indexPath.row)
+            emojis[indexPath.section].remove(at: indexPath.row)
             tableView.deleteRows(at: [indexPath], with: .fade)
         } else if editingStyle == .insert {
             // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view

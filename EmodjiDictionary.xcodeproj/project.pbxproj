@@ -7,7 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		92B6EF51216F46F5005F7BDC /* EmojiDetailTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92B6EF50216F46F5005F7BDC /* EmojiDetailTableViewController.swift */; };
+		92B6EF51216F46F5005F7BDC /* AddEditEmojiTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92B6EF50216F46F5005F7BDC /* AddEditEmojiTableViewController.swift */; };
 		92CA70FF216E173100DE98E6 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92CA70FE216E173100DE98E6 /* AppDelegate.swift */; };
 		92CA7104216E173100DE98E6 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 92CA7102216E173100DE98E6 /* Main.storyboard */; };
 		92CA7106216E173300DE98E6 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 92CA7105216E173300DE98E6 /* Assets.xcassets */; };
@@ -18,7 +18,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		92B6EF50216F46F5005F7BDC /* EmojiDetailTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmojiDetailTableViewController.swift; sourceTree = "<group>"; };
+		92B6EF50216F46F5005F7BDC /* AddEditEmojiTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddEditEmojiTableViewController.swift; sourceTree = "<group>"; };
 		92CA70FB216E173100DE98E6 /* EmodjiDictionary.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = EmodjiDictionary.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		92CA70FE216E173100DE98E6 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		92CA7103216E173100DE98E6 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -84,7 +84,7 @@
 			isa = PBXGroup;
 			children = (
 				92CA7114216E1A4500DE98E6 /* EmojiTableViewController.swift */,
-				92B6EF50216F46F5005F7BDC /* EmojiDetailTableViewController.swift */,
+				92B6EF50216F46F5005F7BDC /* AddEditEmojiTableViewController.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -172,7 +172,7 @@
 				92CA7115216E1A4500DE98E6 /* EmojiTableViewController.swift in Sources */,
 				92CA7118216E6FA400DE98E6 /* EmojiTableViewCell.swift in Sources */,
 				92CA70FF216E173100DE98E6 /* AppDelegate.swift in Sources */,
-				92B6EF51216F46F5005F7BDC /* EmojiDetailTableViewController.swift in Sources */,
+				92B6EF51216F46F5005F7BDC /* AddEditEmojiTableViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

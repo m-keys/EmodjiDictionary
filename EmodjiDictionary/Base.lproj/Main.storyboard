@@ -89,7 +89,7 @@
         <!--Root View Controller-->
         <scene sceneID="sYz-aY-2Hw">
             <objects>
-                <tableViewController id="S6f-uo-p3q" customClass="EmojiDetailTableViewController" customModule="EmodjiDictionary" customModuleProvider="target" sceneMemberID="viewController">
+                <tableViewController id="S6f-uo-p3q" customClass="AddEditEmojiTableViewController" customModule="EmodjiDictionary" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="static" style="grouped" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="18" sectionFooterHeight="18" id="3Cx-jI-Duh">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="480"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -234,7 +234,7 @@
             <objects>
                 <navigationController id="Emw-Cr-MrA" sceneMemberID="viewController">
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="T7j-vB-po8">
-                        <rect key="frame" x="0.0" y="20" width="320" height="50"/>
+                        <rect key="frame" x="0.0" y="20" width="320" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <connections>

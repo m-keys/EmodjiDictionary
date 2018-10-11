@@ -10,6 +10,7 @@ import UIKit
 
 class EmojiTableViewController: UITableViewController {
     
+    var selectedEmoji: Emoji?
     var emojis: [[Emoji]] = [[
         Emoji(symbol: "🐢", name: "Черепаха", description: "Зеленая черепаха", usage: "медленное движение"),
         Emoji(symbol: "🐰", name: "Заяц", description: "Заяц с ушами", usage: "быстрое движение"),
@@ -30,6 +31,10 @@ class EmojiTableViewController: UITableViewController {
         // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
         // self.navigationItem.rightBarButtonItem = self.editButtonItem
         navigationItem.leftBarButtonItem = editButtonItem
+    }
+    
+    @IBAction func unwindToEmogiTableViewController(_ inwindSegue: UIStoryboardSegue) {
+        
     }
 
     // MARK: - Table view data source
@@ -114,15 +119,18 @@ class EmojiTableViewController: UITableViewController {
     }
     */
 
-    /*
     // MARK: - Navigation
 
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+        if segue.identifier == "EditEmoji" {
+            if let indexPath = tableView.indexPathForSelectedRow {
+                let NC = segue.destination as! UINavigationController
+                let DVC = NC.topViewController as! EmojiDetailTableViewController
+                DVC.emoji = emojis[indexPath.section][indexPath.row]
+            }
+        }
     }
-    */
     
     //MARK: UITableViewDelegate
 //    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {

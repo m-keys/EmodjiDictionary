@@ -32,10 +32,6 @@ class EmojiTableViewController: UITableViewController {
         // self.navigationItem.rightBarButtonItem = self.editButtonItem
         navigationItem.leftBarButtonItem = editButtonItem
     }
-    
-    @IBAction func unwindToEmogiTableViewController(_ inwindSegue: UIStoryboardSegue) {
-        
-    }
 
     // MARK: - Table view data source
 
@@ -127,6 +123,7 @@ class EmojiTableViewController: UITableViewController {
             let emoji = emojis[indexPath.section][indexPath.row]
             let navigationController = segue.destination as! UINavigationController
             let addEditEmojiTableViewController = navigationController.topViewController! as! AddEditEmojiTableViewController
+            addEditEmojiTableViewController.navigationItem.title = "Edit"
             addEditEmojiTableViewController.emoji = emoji
         }
     }
@@ -147,5 +144,21 @@ class EmojiTableViewController: UITableViewController {
 //
 //        print("\(emoji.symbol) - \(indexPath)")
 //    }
+    
+    @IBAction func unwindToEmogiTableViewController(segue: UIStoryboardSegue) {
+        guard segue.identifier == "saveUnwind" else { return }
+        let sourceViewController = segue.source as! AddEditEmojiTableViewController
+        let emoji = sourceViewController.emoji
+        print(sourceViewController.emoji)
+        
+        if let selectedIndexPath = tableView.indexPathForSelectedRow {
+            emojis[selectedIndexPath.section][selectedIndexPath.row] = emoji
+            tableView.reloadRows(at: [selectedIndexPath], with: .none)
+        } else {
+            let newIndexPath = IndexPath(row: emojis.count, section: 0)
+            emojis.append([emoji])
+            tableView.insertRows(at: [newIndexPath], with: .automatic)
+        }
+    }
 
 }

@@ -26,7 +26,6 @@ class AddEditEmojiTableViewController: UITableViewController, UITextFieldDelegat
     override func viewDidLoad() {
         super.viewDidLoad()
         symbolTextField.delegate = self
-        symbolTextField.keyboardType = .namePhonePad
         updateUI()
         updateSaveButtonState()
         

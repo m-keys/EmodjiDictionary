@@ -155,7 +155,7 @@ class EmojiTableViewController: UITableViewController {
             emojis[selectedIndexPath.section][selectedIndexPath.row] = emoji
             tableView.reloadRows(at: [selectedIndexPath], with: .none)
         } else {
-            let newIndexPath = IndexPath(row: emojis.count, section: 0)
+            let newIndexPath = IndexPath(row: emojis.count, section: 1)
             emojis.append([emoji])
             tableView.insertRows(at: [newIndexPath], with: .automatic)
         }

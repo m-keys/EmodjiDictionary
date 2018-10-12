@@ -41,6 +41,13 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		923706702170D27000083E09 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
 		92CA70F2216E173100DE98E6 = {
 			isa = PBXGroup;
 			children = (
@@ -60,6 +67,7 @@
 		92CA70FD216E173100DE98E6 /* EmodjiDictionary */ = {
 			isa = PBXGroup;
 			children = (
+				923706702170D27000083E09 /* Extensions */,
 				92CA70FE216E173100DE98E6 /* AppDelegate.swift */,
 				92CA7102216E173100DE98E6 /* Main.storyboard */,
 				92CA7110216E178000DE98E6 /* Model */,

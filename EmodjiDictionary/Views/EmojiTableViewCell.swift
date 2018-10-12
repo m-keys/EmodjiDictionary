@@ -15,7 +15,9 @@ class EmojiTableViewCell: UITableViewCell {
     @IBOutlet weak var descriptionLabel: UILabel!
     
     func update(with emoji: Emoji) {
-        symboLabel.text = emoji.symbol
+        if emoji.symbol.checkcontainEmoji {
+            symboLabel.text = emoji.symbol
+        }
         nameLabel.text = emoji.name
         descriptionLabel.text = emoji.description
     }

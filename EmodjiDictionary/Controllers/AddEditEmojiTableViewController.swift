@@ -52,7 +52,9 @@ class AddEditEmojiTableViewController: UITableViewController, UITextFieldDelegat
     }
     
     func updateUI() {
-        symbolTextField.text = emoji.symbol
+        if emoji.symbol.checkcontainEmoji {
+            symbolTextField.text = emoji.symbol
+        }
         nameTextField.text = emoji.name
         descriptionTextField.text = emoji.description
         usageTextField.text = emoji.usage
@@ -63,7 +65,7 @@ class AddEditEmojiTableViewController: UITableViewController, UITextFieldDelegat
         let nameText = nameTextField.text ?? ""
         let descriptionText = descriptionTextField.text ?? ""
         let usageText = usageTextField.text ?? ""
-        saveButton.isEnabled = !symbolText.isEmpty && !nameText.isEmpty && !descriptionText.isEmpty && !usageText.isEmpty
+        saveButton.isEnabled = symbolText.checkcontainEmoji && !nameText.isEmpty && !descriptionText.isEmpty && !usageText.isEmpty
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -79,4 +81,25 @@ class AddEditEmojiTableViewController: UITableViewController, UITextFieldDelegat
         emoji = Emoji(symbol: symbol, name: name, description: description, usage: usage)
     }
 
+}
+
+extension String {
+    public var checkcontainEmoji: Bool
+    {
+        for ucode in unicodeScalars
+        {
+            switch ucode.value
+            {
+            case 0x3030, 0x00AE, 0x00A9,
+                 0x1D000...0x1F77F,
+                 0x2100...0x27BF,
+                 0xFE00...0xFE0F,
+                 0x1F900...0x1F9FF:
+                return true
+            default:
+                continue
+            }
+        }
+        return false
+    }
 }

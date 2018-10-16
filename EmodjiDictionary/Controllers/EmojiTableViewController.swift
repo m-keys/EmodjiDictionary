@@ -18,9 +18,15 @@ class EmojiTableViewController: UITableViewController {
         Emoji(symbol: "🐶", name: "Собака", description: "Типичный пес", usage: "открытое поведение")], [
         Emoji(symbol: "😀", name: "Смайлик", description: "Улыбающаяся мордочка", usage: "полное счастье"),
         Emoji(symbol: "😇", name: "Ангел", description: "Мордочка с нимбом", usage: "хорошие поступки"),
-        Emoji(symbol: "😍", name: "Влюбленный", description: "Влюбленная мордочка", usage: "состояние влюбленности")
-    ]]
-    var headerTitles = ["Животные", "Смайлики"]
+        Emoji(symbol: "😍", name: "Влюбленный", description: "Влюбленная мордочка", usage: "состояние влюбленности")], []
+    ]
+    var headerTitles = ["Животные", "Смайлики", "Новое"]
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(true)
+        
+        dataRetrieval()
+    }
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -40,7 +46,7 @@ class EmojiTableViewController: UITableViewController {
     }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        if section == 0 || section == 1 {
+        if section == 0 || section == 1 || section == 2 {
             return emojis[section].count
         } else {
             // not implemented
@@ -95,6 +101,7 @@ class EmojiTableViewController: UITableViewController {
 //            emojis.remove(at: indexPath.row)
             emojis[indexPath.section].remove(at: indexPath.row)
             tableView.deleteRows(at: [indexPath], with: .fade)
+//            saveData()
         } else if editingStyle == .insert {
             // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
         }    
@@ -155,10 +162,44 @@ class EmojiTableViewController: UITableViewController {
             emojis[selectedIndexPath.section][selectedIndexPath.row] = emoji
             tableView.reloadRows(at: [selectedIndexPath], with: .none)
         } else {
-            let newIndexPath = IndexPath(row: emojis.count, section: 1)
-            emojis.append([emoji])
-            tableView.insertRows(at: [newIndexPath], with: .automatic)
+//            let newIndexPath = IndexPath(row: emojis.count, section: 0)
+//            emojis[newIndexPath.section].append(emoji)
+//            tableView.insertRows(at: [newIndexPath], with: .automatic)
+            emojis[2].append(emoji)
+            tableView.reloadData()
         }
+        
+        saveData()
+    }
+    
+    func dataRetrieval() {
+        // Создание адреса для записи/чтения файла
+        let documentDirectory = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first!
+        let archiveURL = documentDirectory.appendingPathComponent("emojis").appendingPathExtension("plist")
+//        print(archiveURL.absoluteString)
+        
+        // Получение данных из файла
+        let propertyListDecoder = PropertyListDecoder()
+        if let data = try? Data(contentsOf: archiveURL),
+            // Декодирование полученных данных в заметку
+            let decodedEmojis = try? propertyListDecoder.decode([[Emoji]].self, from: data) {
+            emojis = decodedEmojis
+//            print(decodedEmojis)
+        }
+    }
+    
+    func saveData() {
+        // Создание адреса для записи/чтения файла
+        let documentDirectory = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first!
+        let archiveURL = documentDirectory.appendingPathComponent("emojis").appendingPathExtension("plist")
+        print(archiveURL.absoluteString)
+        
+        // Кодирование заметки
+        let propertyListEncoder = PropertyListEncoder()
+        let encodereEmojis = try? propertyListEncoder.encode(emojis)
+        
+        //Запись заметки в файл
+        try? encodereEmojis?.write(to: archiveURL, options: .noFileProtection)
     }
 
 }
